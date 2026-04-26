@@ -82,4 +82,5 @@ public class KlienciKawiarni {
     public int hashCode() {
         return Objects.hashCode(idKlienta);
     }
+
 }

@@ -68,10 +68,7 @@ public class ProduktMenu {
 
     @Override
    public String toString(){
-        return "Kod produktu: " + kod + ", Nazwa: " + ", Kategoria: " + kategoria + ", Cena: " + cena;
+        return "Kod produktu: " + kod + ", Nazwa: " + nazwa + ", Kategoria: " + kategoria + ", Cena: " + cena;
    }
-
-
-
 
 }
