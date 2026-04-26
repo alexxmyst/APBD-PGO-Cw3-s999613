@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class ProduktMenu {
 
     private String kod;
@@ -7,18 +9,16 @@ public class ProduktMenu {
     private static int liczbaProduktow = 0;
 
     public ProduktMenu(String kod, String kategoria, double cena, String nazwa) {
-        this.kod = kod;
-        this.kategoria = kategoria;
-        this.cena = cena;
-        this.nazwa = nazwa;
-        liczbaProduktow++;
+        this.setKod(kod);
+        this.setKategoria(kategoria);
+        this.setCena(cena);
+        this.setNazwa(nazwa);
+        ProduktMenu.liczbaProduktow++;
     }
-
 
     public static int getLiczbaProduktow() {
         return liczbaProduktow;
     }
-
 
     public String getKod() {
         return kod;
@@ -36,14 +36,37 @@ public class ProduktMenu {
         return kategoria;
     }
 
-   public void porownanie(String kodProduktu){
-        if ((this.getKod()).equals(kodProduktu)) {
-            System.out.println("To jest ten sam produkt!");
-       } else {
-            System.out.println("To nie jest ten sam produkt!");
+    public void setKategoria(String kategoria) {
+        if (kategoria.isEmpty()){
+            System.out.println("Kategoria nie moze być pusta!");
         }
-   }
-   @Override
+        this.kategoria = kategoria;
+    }
+
+    public void setCena(double cena) {
+        this.cena = cena;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public void setKod(String kod) {
+        this.kod = kod;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ProduktMenu that)) return false;
+        return Objects.equals(kod, that.kod);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(kod);
+    }
+
+    @Override
    public String toString(){
         return "Kod produktu: " + kod + ", Nazwa: " + ", Kategoria: " + kategoria + ", Cena: " + cena;
    }
